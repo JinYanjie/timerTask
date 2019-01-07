@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyj.tt.dao.TaskDao">
+    <select id="findAllTask" resultType="com.jyj.tt.model.TaskBean">
+        select t.id,t.name,t.time from  timer_task t
+    </select>
+    <insert id="addTask" parameterType="com.jyj.tt.model.TaskBean">
+        insert into timer_task ( name, time)
+        values (#{name,jdbcType=VARCHAR},#{time,jdbcType=VARCHAR})
+    </insert>
+</mapper>
