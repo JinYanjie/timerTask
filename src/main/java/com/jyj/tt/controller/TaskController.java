@@ -24,7 +24,7 @@ public class TaskController {
     Object addTask(@RequestParam String name, @RequestParam String time) {
         TaskBean taskBean = new TaskBean(name, time);
         taskService.addTask(taskBean);
-        return ReturnUtil.saveSuccess();
+        return ReturnUtil.onSuccess("保存成功");
     }
 
     @ResponseBody

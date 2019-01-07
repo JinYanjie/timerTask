@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyj.tt.dao.TimerDao">
+    <select id="findAllTimer" resultType="com.jyj.tt.model.TimerBean">
+        select * from  z_timer t
+    </select>
+    <insert id="addTimer" parameterType="com.jyj.tt.model.TimerBean">
+        insert into z_timer ( jobName,jobGroupName,triggerName,triggerGroupName,startTime,endTime,intervalTime,repeatCount,userId)
+        values (
+        #{jobName,jdbcType=VARCHAR},
+        #{jobGroupName,jdbcType=VARCHAR},
+        #{triggerName,jdbcType=VARCHAR},
+        #{triggerGroupName,jdbcType=VARCHAR},
+        #{startTime,jdbcType=VARCHAR},
+        #{endTime,jdbcType=VARCHAR},
+        #{intervalTime,jdbcType=INTEGER},
+        #{repeatCount,jdbcType=INTEGER},
+        #{userId,jdbcType=INTEGER}
+        )
+    </insert>
+</mapper>

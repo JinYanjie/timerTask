@@ -8,4 +8,7 @@
         insert into user ( name, email)
         values (#{name,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR})
     </insert>
+    <select id="findMyTimer" resultType="com.jyj.tt.model.TimerBean" parameterType="INTEGER">
+        select * from  z_timer t where t.userId like #{id}
+    </select>
 </mapper>

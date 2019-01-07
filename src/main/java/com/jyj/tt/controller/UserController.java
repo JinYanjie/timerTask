@@ -1,6 +1,7 @@
 package com.jyj.tt.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.jyj.tt.model.TimerBean;
 import com.jyj.tt.model.UserBean;
 import com.jyj.tt.service.UserService;
 import com.jyj.tt.util.ReturnUtil;
@@ -24,7 +25,7 @@ public class UserController {
     Object addNewUser(@RequestParam String name, @RequestParam String email) {
         UserBean userBean = new UserBean(name, email);
         userService.addUser(userBean);
-        return ReturnUtil.saveSuccess();
+        return ReturnUtil.onSuccess("保存成功");
     }
 
 
@@ -37,6 +38,19 @@ public class UserController {
                     int pageSize) {
         PageInfo<UserBean> allUser = userService.findAllUser(pageNum, pageSize);
         return ReturnUtil.getObject(allUser);
+    }
+
+    @ResponseBody
+    @GetMapping("/myTimer")
+    public Object getMyTimer(
+            @RequestParam(name = "page", required = false, defaultValue = "1")
+                    int pageNum,
+            @RequestParam(name = "rows", required = false, defaultValue = "10")
+                    int pageSize,
+            @RequestParam int userId
+            ) {
+        PageInfo<TimerBean> myTimer = userService.findMyTimer(pageNum, pageSize,userId);
+        return ReturnUtil.getObject(myTimer);
     }
 
 }

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.jyj.tt.dao.TaskDao;
 import com.jyj.tt.dao.UserDao;
 import com.jyj.tt.model.TaskBean;
+import com.jyj.tt.model.TimerBean;
 import com.jyj.tt.model.UserBean;
 import com.jyj.tt.service.TaskService;
 import com.jyj.tt.service.UserService;
@@ -25,6 +26,14 @@ public class UserServiceImpl implements UserService {
         PageHelper.startPage(pageNum, pageSize);
         List<UserBean> allUser = userDao.findAllUser();
         PageInfo<UserBean> pageInfo = new PageInfo<>(allUser);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo<TimerBean> findMyTimer(int pageNum, int pageSize,int userId) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<TimerBean> myTimer = userDao.findMyTimer(userId);
+        PageInfo<TimerBean> pageInfo = new PageInfo<>(myTimer);
         return pageInfo;
     }
 

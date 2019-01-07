@@ -18,11 +18,11 @@ public class ReturnUtil {
         return resultMap;
     }
 
-    public static Object saveSuccess() {
+    public static Object onSuccess(String msg) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("success", true);
         resultMap.put("code", 1000);
-        resultMap.put("message", "保存成功");
+        resultMap.put("message", msg);
         Map<String, Object> taskMap = new HashMap<String, Object>();
         resultMap.put("data", taskMap);
         return resultMap;
